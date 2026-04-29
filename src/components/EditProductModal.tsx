@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Product, Part, RequiredPart } from "@/lib/types";
+import { Product, Part, RequiredPart, PartCategory } from "@/lib/types";
 
 interface EditProductModalProps {
   product: Product;
@@ -17,6 +17,7 @@ export default function EditProductModal({
   onSave,
 }: EditProductModalProps) {
   const [name, setName] = useState(product.name);
+  const [quantity, setQuantity] = useState(product.quantity);
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [imageUrls, setImageUrls] = useState<string[]>(product.imageUrls || []);
   const [requiredParts, setRequiredParts] = useState<RequiredPart[]>(
@@ -45,6 +46,7 @@ export default function EditProductModal({
     onSave({
       ...product,
       name,
+      quantity,
       imageUrls: [...imageUrls, ...newImageUrls],
       requiredParts,
     });
@@ -71,6 +73,20 @@ export default function EditProductModal({
     setRequiredParts(requiredParts.filter((p) => p.partId !== partId));
   };
 
+  const groupedParts = parts
+    .filter((p) => !requiredParts.some((rp) => rp.partId === p.id))
+    .reduce(
+      (acc, part) => {
+        const category = part.category || "Other";
+        if (!acc[category]) {
+          acc[category] = [];
+        }
+        acc[category].push(part);
+        return acc;
+      },
+      {} as Record<PartCategory, Part[]>,
+    );
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg">
@@ -80,6 +96,12 @@ export default function EditProductModal({
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="input input-bordered w-full"
+          />
+          <input
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(parseInt(e.target.value, 10) || 0)}
             className="input input-bordered w-full"
           />
           <input
@@ -111,7 +133,7 @@ export default function EditProductModal({
               ))
             : <div className="relative w-full h-24">
                 <img
-                  src={(product as any).imageUrl || ""}
+                  src={(product as any).imageUrl || "null"}
                   alt={product.name}
                   className="w-full h-full object-cover rounded-lg"
                 />
@@ -154,15 +176,20 @@ export default function EditProductModal({
           <div className="mt-4">
             <select
               onChange={(e) => addRequiredPart(parseInt(e.target.value, 10))}
-              className="select select-bordered w-full">
-              <option value="">Add a part</option>
-              {parts
-                .filter((p) => !requiredParts.some((rp) => rp.partId === p.id))
-                .map((p) => (
-                  <option key={p.id} value={p.id}>
-                    {p.name}
-                  </option>
-                ))}
+              className="select select-bordered w-full"
+              defaultValue="">
+              <option value="" disabled>
+                Add a part
+              </option>
+              {Object.keys(groupedParts).map((category) => (
+                <optgroup label={category} key={category}>
+                  {groupedParts[category as PartCategory].map((p) => (
+                    <option key={p.id} value={p.id}>
+                      {p.name}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
             </select>
           </div>
         </div>

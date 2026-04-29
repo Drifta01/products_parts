@@ -9,6 +9,10 @@ export interface Product {
     name: string;
     imageUrls: string[];
     requiredParts: RequiredPart[];
+    quantity: number;
+    inConstruction: number;
+    completionPercentage?: number;
+    neededParts?: RequiredPart[];
 }
 
 export type PartCategory = "Nuts & Bolts" | "Electrical Components" | "Other";

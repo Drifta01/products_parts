@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Product, Part, PartCategory } from "@/lib/types";
 import EditProductModal from "@/components/EditProductModal";
 import EditPartModal from "@/components/EditPartModal";
 import AddPartModal from "@/components/AddPartModal";
+import AddProductModal from "@/components/AddProductModal";
 
 export default function InventoryPage() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -14,6 +16,7 @@ export default function InventoryPage() {
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [editingPart, setEditingPart] = useState<Part | null>(null);
   const [isAddPartModalOpen, setIsAddPartModalOpen] = useState(false);
+  const [isAddProductModalOpen, setIsAddProductModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,41 +32,18 @@ export default function InventoryPage() {
     fetchData();
   }, []);
 
-  const handleAddProduct = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newProductName || newProductImageFiles.length === 0) return;
-
-    const uploadPromises = newProductImageFiles.map(async (file) => {
-      const formData = new FormData();
-      formData.append("file", file);
-
-      const uploadRes = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      return uploadRes.json();
-    });
-
-    const uploadResults = await Promise.all(uploadPromises);
-
-    const newProduct = {
-      name: newProductName,
-      imageUrls: uploadResults.map((res) => res.url),
-    };
-
+  const handleAddProduct = async (product: Omit<Product, "id">) => {
     const productRes = await fetch("/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newProduct),
+      body: JSON.stringify(product),
     });
 
     const addedProduct = await productRes.json();
     setProducts([...products, addedProduct]);
-    setNewProductName("");
-    setNewProductImageFiles([]);
+    setIsAddProductModalOpen(false);
   };
 
   const handleAddPart = async (part: Omit<Part, "id">) => {
@@ -122,6 +102,49 @@ export default function InventoryPage() {
     setEditingPart(null);
   };
 
+  const handleBuildProduct = async (product: Product) => {
+    const missingParts: string[] = [];
+    const updatedParts: Part[] = [];
+
+    for (const requiredPart of product.requiredParts) {
+      const part = parts.find((p) => p.id === requiredPart.partId);
+      if (!part || part.quantity < requiredPart.quantity) {
+        missingParts.push(part ? part.name : `Part ID ${requiredPart.partId}`);
+      }
+    }
+
+    if (missingParts.length > 0) {
+      alert(`Missing parts: ${missingParts.join(", ")}`);
+      return;
+    }
+
+    for (const requiredPart of product.requiredParts) {
+      const part = parts.find((p) => p.id === requiredPart.partId);
+      if (part) {
+        const updatedPart = {
+          ...part,
+          quantity: part.quantity - requiredPart.quantity,
+        };
+        updatedParts.push(updatedPart);
+      }
+    }
+
+    const updatedProduct = {
+      ...product,
+      inConstruction: product.inConstruction + 1,
+    };
+
+    await handleUpdateProduct(updatedProduct);
+    for (const part of updatedParts) {
+      await handleUpdatePart(part);
+    }
+
+    setProducts(
+      products.map((p) => (p.id === updatedProduct.id ? updatedProduct : p)),
+    );
+    setParts(parts.map((p) => updatedParts.find((up) => up.id === p.id) || p));
+  };
+
   const groupedParts = parts.reduce(
     (acc, part) => {
       const category = part.category || "Other";
@@ -140,34 +163,20 @@ export default function InventoryPage() {
         Inventory Management
       </h1>
 
+      <div className="text-center mb-10">
+        <Link href="/in-construction" className="btn btn-secondary">
+          View In-Construction Products
+        </Link>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4 hover:bg-slate-300">
-            Add New Product
-          </h2>
-          <form onSubmit={handleAddProduct} className="space-y-4">
-            <input
-              type="text"
-              value={newProductName}
-              onChange={(e) => setNewProductName(e.target.value)}
-              placeholder="Product Name"
-              className="input input-bordered w-full"
-            />
-            <input
-              type="file"
-              multiple
-              onChange={(e) =>
-                e.target.files &&
-                setNewProductImageFiles(Array.from(e.target.files))
-              }
-              className="file-input file-input-bordered w-full"
-            />
-            <button
-              type="submit"
-              className="btn btn-primary w-100 rounded-full hover:bg-slate-300  ">
-              Add Product
-            </button>
-          </form>
+          <h2 className="text-2xl font-bold mb-4">Add New Product</h2>
+          <button
+            onClick={() => setIsAddProductModalOpen(true)}
+            className="btn btn-primary w-full rounded-full hover:bg-slate-300">
+            Add Product
+          </button>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md">
@@ -193,8 +202,18 @@ export default function InventoryPage() {
                   key={product.id}
                   onClick={() => setEditingProduct(product)}
                   className="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:bg-gray-100">
-                  <span className="font-medium">{product.name}</span>
+                  <span className="font-medium">
+                    {product.name} (Quantity: {product.quantity})
+                  </span>
                   <div className="space-x-2">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleBuildProduct(product);
+                      }}
+                      className="btn btn-sm btn-outline btn-success">
+                      Build
+                    </button>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
@@ -280,6 +299,14 @@ export default function InventoryPage() {
           products={products}
           onClose={() => setIsAddPartModalOpen(false)}
           onSave={handleAddPart}
+        />
+      )}
+
+      {isAddProductModalOpen && (
+        <AddProductModal
+          parts={parts}
+          onClose={() => setIsAddProductModalOpen(false)}
+          onSave={handleAddProduct}
         />
       )}
     </div>
