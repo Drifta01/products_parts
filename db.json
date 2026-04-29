@@ -1,0 +1,134 @@
+{
+  "products": [
+    {
+      "id": 1777365287431,
+      "name": "41005",
+      "imageUrl": "/uploads/1777365287416-IMG_20260129_141413_950 1.jpg",
+      "requiredParts": [
+        {
+          "partId": 1777375265611,
+          "quantity": 4
+        },
+        {
+          "partId": 1777375487763,
+          "quantity": 4
+        }
+      ],
+      "imageUrls": [
+        "/uploads/1777378286549-IMG_0991.JPG"
+      ]
+    },
+    {
+      "name": "2420/AS",
+      "imageUrls": [
+        "/uploads/1777429325510-1224_3015_supercaherge_front-2.jpg"
+      ],
+      "id": 1777429325528,
+      "requiredParts": [
+        {
+          "partId": 1777375265611,
+          "quantity": 4
+        },
+        {
+          "partId": 1777452789090,
+          "quantity": 4
+        },
+        {
+          "partId": 1777453635777,
+          "quantity": 1
+        },
+        {
+          "partId": 1777453759137,
+          "quantity": 8
+        },
+        {
+          "partId": 1777453812171,
+          "quantity": 8
+        },
+        {
+          "partId": 1777453890549,
+          "quantity": 4
+        },
+        {
+          "partId": 1777454441852,
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "parts": [
+    {
+      "id": 1777375265611,
+      "name": "M8 40mm Hex Bolt",
+      "quantity": 96,
+      "inStock": true,
+      "category": "Nuts & Bolts"
+    },
+    {
+      "id": 1777375487763,
+      "name": "M6 75mm Hex Bolt",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Nuts & Bolts"
+    },
+    {
+      "id": 1777452789090,
+      "name": "M6 65mm Hex",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Nuts & Bolts"
+    },
+    {
+      "id": 1777452854271,
+      "name": "M8 20mm Hex",
+      "quantity": 96,
+      "inStock": true,
+      "category": "Nuts & Bolts"
+    },
+    {
+      "id": 1777453635777,
+      "name": "PCB Amps ",
+      "quantity": 14,
+      "inStock": true,
+      "category": "Electrical Components",
+      "imageUrl": "/uploads/1777454250938-1224_3015_supercaherge_meter.jpg"
+    },
+    {
+      "name": "M8 Washers (Large)",
+      "quantity": 192,
+      "inStock": true,
+      "category": "Nuts & Bolts",
+      "id": 1777453759137
+    },
+    {
+      "name": "M8 Washers (Small)",
+      "quantity": 192,
+      "inStock": true,
+      "category": "Nuts & Bolts",
+      "id": 1777453812171
+    },
+    {
+      "name": "M8 Spring Washers",
+      "quantity": 96,
+      "inStock": true,
+      "category": "Nuts & Bolts",
+      "id": 1777453890549
+    },
+    {
+      "id": 1777454206497,
+      "name": "",
+      "quantity": 15,
+      "inStock": false,
+      "category": "Electrical Components",
+      "imageUrl": "/uploads/1777454206473-1224_3015_supercaherge_AC+Switch.jpg"
+    },
+    {
+      "id": 1777454441852,
+      "name": "AC Circuit Breaker (5amp)",
+      "quantity": 9,
+      "inStock": true,
+      "category": "Electrical Components",
+      "imageUrl": "/uploads/1777454441823-1224_3015_supercaherge_AC+Switch.jpg"
+    }
+  ]
+}
