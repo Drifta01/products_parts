@@ -17,10 +17,6 @@
       ],
       "requiredParts": [
         {
-          "partId": 1777452854271,
-          "quantity": 4
-        },
-        {
           "partId": 1777375487763,
           "quantity": 4
         },
@@ -39,6 +35,10 @@
         {
           "partId": 1777464772759,
           "quantity": 1
+        },
+        {
+          "partId": 1783456088488,
+          "quantity": 4
         }
       ],
       "quantity": 1,
@@ -46,7 +46,7 @@
       "id": 1777457127532
     },
     {
-      "name": "2420 / AS",
+      "name": "3620 / AS",
       "imageUrls": [
         "/uploads/1777465323793-2430A-S_Front_panel.jpg"
       ],
@@ -109,7 +109,7 @@
     {
       "id": 1777452854271,
       "name": "M8 20mm Hex",
-      "quantity": 72,
+      "quantity": 76,
       "inStock": true,
       "category": "Nuts & Bolts"
     },
@@ -144,7 +144,7 @@
     },
     {
       "id": 1777454206497,
-      "name": "",
+      "name": "HeatSink",
       "quantity": 15,
       "inStock": false,
       "category": "Electrical Components",
@@ -166,11 +166,11 @@
       "id": 1777462420675
     },
     {
+      "id": 1777464772759,
       "name": "41005 Tranformer",
-      "quantity": 0,
+      "quantity": 4,
       "inStock": true,
-      "category": "Other",
-      "id": 1777464772759
+      "category": "Other"
     },
     {
       "name": "AC Circuit Breaker (8 Amp)",
@@ -178,6 +178,20 @@
       "inStock": true,
       "category": "Electrical Components",
       "id": 1777465655727
+    },
+    {
+      "name": "M8 30mm",
+      "quantity": -4,
+      "inStock": false,
+      "category": "Nuts & Bolts",
+      "id": 1783456088488
+    },
+    {
+      "name": "Heavy Duty Switch",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Electrical Components",
+      "id": 1783456170277
     }
   ]
 }

@@ -1,73 +1,57 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Product, Part } from "@/lib/types";
-import Link from "next/link";
-import InConstructionCard from "@/components/InConstructionCard";
+import { Product } from "@/lib/types";
 
 export default function InConstructionPage() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [parts, setParts] = useState<Part[]>([]);
 
   useEffect(() => {
-    const fetchProductsAndParts = async () => {
-      const [productsRes, partsRes] = await Promise.all([
-        fetch("/api/products"),
-        fetch("/api/parts"),
-      ]);
-      const [productsData, partsData] = await Promise.all([
-        productsRes.json(),
-        partsRes.json(),
-      ]);
-      setProducts(productsData);
-      setParts(partsData);
+    const fetchProducts = async () => {
+      const res = await fetch("/api/products");
+      const data = await res.json();
+      // Filter products that are in construction
+      const inConstructionProducts = data.filter(
+        (p: Product) => p.inConstruction > 0,
+      );
+      setProducts(inConstructionProducts);
     };
 
-    fetchProductsAndParts();
+    fetchProducts();
   }, []);
-
-  const handleUpdateProduct = async (updatedProduct: Product) => {
-    const res = await fetch(`/api/products/${updatedProduct.id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
-
-    const returnedProduct = await res.json();
-    setProducts(
-      products.map((p) => (p.id === returnedProduct.id ? returnedProduct : p)),
-    );
-  };
-
-  const inConstructionProducts = products.filter((p) => p.inConstruction > 0);
 
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-4xl font-bold text-center my-10">
         Products In Construction
       </h1>
-      <div className="text-center mb-10">
-        <Link href="/inventory" className="btn btn-primary">
-          Back to Inventory
-        </Link>
-      </div>
 
-      <div className="space-y-6">
-        {inConstructionProducts.length > 0 ?
-          inConstructionProducts.map((product) => (
-            <InConstructionCard
-              key={product.id}
-              product={product}
-              parts={parts}
-              onUpdate={handleUpdateProduct}
-            />
-          ))
-        : <div className="bg-white p-6 rounded-lg shadow-md text-center">
-            <p>No products are currently in construction.</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {products.map((product) => (
+          <div key={product.id} className="card bg-base-100 shadow-xl">
+            <figure>
+              <img
+                src={product.imageUrls[0] || "/placeholder.jpg"}
+                alt={product.name}
+                className="h-48 w-full object-cover"
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{product.name}</h2>
+              <p>Quantity in construction: {product.inConstruction}</p>
+              <div className="w-full bg-gray-200 rounded-full h-2.5">
+                <div
+                  className="bg-blue-600 h-2.5 rounded-full"
+                  style={{
+                    width: `${product.completionPercentage || 0}%`,
+                  }}></div>
+              </div>
+              <p className="text-sm text-right">
+                {Math.round(product.completionPercentage || 0)}% Complete
+              </p>
+            </div>
           </div>
-        }
+        ))}
       </div>
     </div>
   );

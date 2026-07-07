@@ -78,7 +78,7 @@ export default function AddProductModal({
     );
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="">
       <div className="bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Add New Product</h2>
         <div className="space-y-4">

@@ -15,7 +15,7 @@ export interface Product {
     neededParts?: RequiredPart[];
 }
 
-export type PartCategory = "Nuts & Bolts" | "Electrical Components" | "Other";
+export type PartCategory = string;
 
 export interface Part {
     id: number;

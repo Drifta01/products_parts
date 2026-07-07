@@ -62,14 +62,14 @@ export default function InConstructionCard({
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="flex items-center space-x-6">
-        <div className="w-32 h-32 flex-shrink-0">
+        <div className="w-32 h-32 flex shrink-0">
           <img
             src={product.imageUrls[0] || "/placeholder.png"}
             alt={product.name}
             className="w-full h-full object-cover rounded-lg"
           />
         </div>
-        <div className="flex-grow">
+        <div className="flex grow">
           <h3 className="text-2xl font-semibold">{product.name}</h3>
           <div className="mt-4">
             <label className="block text-sm font-medium text-gray-700">

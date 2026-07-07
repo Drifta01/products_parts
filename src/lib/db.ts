@@ -67,7 +67,7 @@ export const deletePart = async (id: number): Promise<void> => {
     await db.write();
 };
 
-export const addPart = async (part: Omit<Part, 'id' | 'inStock' | 'productId'>): Promise<Part> => {
+export const addPart = async (part: Omit<Part, 'id' | 'inStock'>): Promise<Part> => {
     await db.read();
     const newPart = { ...part, id: Date.now(), inStock: part.quantity > 0 };
     db.data?.parts.push(newPart);
