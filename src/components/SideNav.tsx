@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const SideNav = () => {
   return (
-    <div className="w-64 h-screen bg-gray-800 text-white p-5">
+    <div className="w-64 min-h-screen bg-gray-800 text-white p-5">
       <h2 className="text-2xl font-bold mb-10">Menu</h2>
       <ul>
         <li className="mb-4">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Product, Part, PartCategory } from "@/lib/types";
+import { Product, Part } from "@/lib/types";
 
 interface AddPartModalProps {
   products: Product[];
@@ -16,7 +16,7 @@ export default function AddPartModal({
 }: AddPartModalProps) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(0);
-  const [category, setCategory] = useState<PartCategory>("Other");
+  const [category, setCategory] = useState<string>("Other");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [selectedProductId, setSelectedProductId] = useState<
     number | undefined
@@ -63,7 +63,7 @@ export default function AddPartModal({
           />
           <select
             value={category}
-            onChange={(e) => setCategory(e.target.value as PartCategory)}
+            onChange={(e) => setCategory(e.target.value)}
             className="select select-bordered w-full">
             <option value="Nuts & Bolts">Nuts & Bolts</option>
             <option value="Electrical Components">Electrical Components</option>

@@ -15,13 +15,20 @@ export interface Product {
     neededParts?: RequiredPart[];
 }
 
-export type PartCategory = string;
+export type PartCategory = {
+    partName: string;
+    partCategory: string;
+    partQuantity: number;
+}
 
 export interface Part {
     id: number;
     name: string;
     quantity: number;
     inStock: boolean;
-    category: PartCategory;
+    // category is stored as a simple string in db.json (e.g. "Nuts & Bolts")
+    category?: string;
+    // optional numeric category id when present
+    categoryId?: number;
     imageUrl?: string;
 }

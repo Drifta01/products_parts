@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Product, Part, RequiredPart, PartCategory } from "@/lib/types";
+import { Product, Part, RequiredPart } from "@/lib/types";
 
 interface EditProductModalProps {
   product: Product;
@@ -84,7 +84,7 @@ export default function EditProductModal({
         acc[category].push(part);
         return acc;
       },
-      {} as Record<PartCategory, Part[]>,
+      {} as Record<string, Part[]>,
     );
 
   return (
@@ -183,7 +183,7 @@ export default function EditProductModal({
               </option>
               {Object.keys(groupedParts).map((category) => (
                 <optgroup label={category} key={category}>
-                  {groupedParts[category as PartCategory].map((p) => (
+                  {groupedParts[category].map((p) => (
                     <option key={p.id} value={p.id}>
                       {p.name}
                     </option>

@@ -13,7 +13,7 @@
     {
       "name": "41005",
       "imageUrls": [
-        "/uploads/1777466004655-IMG_0991.JPG"
+        "/uploads/1777365287416-IMG_20260129_141413_950 1.jpg"
       ],
       "requiredParts": [
         {
@@ -39,6 +39,14 @@
         {
           "partId": 1783456088488,
           "quantity": 4
+        },
+        {
+          "partId": 1783456170277,
+          "quantity": 2
+        },
+        {
+          "partId": 1783483361229,
+          "quantity": 4
         }
       ],
       "quantity": 1,
@@ -53,7 +61,7 @@
       "requiredParts": [
         {
           "partId": 1777453635777,
-          "quantity": 1
+          "quantity": 2
         },
         {
           "partId": 1777452854271,
@@ -79,7 +87,7 @@
       "quantity": 0,
       "inConstruction": 3,
       "id": 1777464979339,
-      "completionPercentage": 7,
+      "completionPercentage": 0,
       "neededParts": []
     }
   ],
@@ -116,7 +124,7 @@
     {
       "id": 1777453635777,
       "name": "PCB Amps ",
-      "quantity": 1,
+      "quantity": 12,
       "inStock": true,
       "category": "Electrical Components",
       "imageUrl": "/uploads/1777454250938-1224_3015_supercaherge_meter.jpg"
@@ -166,13 +174,6 @@
       "id": 1777462420675
     },
     {
-      "id": 1777464772759,
-      "name": "41005 Tranformer",
-      "quantity": 4,
-      "inStock": true,
-      "category": "Other"
-    },
-    {
       "name": "AC Circuit Breaker (8 Amp)",
       "quantity": 20,
       "inStock": true,
@@ -180,18 +181,61 @@
       "id": 1777465655727
     },
     {
+      "id": 1783456088488,
       "name": "M8 30mm",
-      "quantity": -4,
+      "quantity": 100,
       "inStock": false,
-      "category": "Nuts & Bolts",
-      "id": 1783456088488
+      "category": "Nuts & Bolts"
     },
     {
+      "id": 1783456170277,
       "name": "Heavy Duty Switch",
+      "quantity": 50,
+      "inStock": false,
+      "category": "Electrical Components"
+    },
+    {
+      "name": "M3 12mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Nuts & Bolts",
+      "id": 1783483150916
+    },
+    {
+      "id": 1783483335589,
+      "name": "M3 20mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Nuts & Bolts"
+    },
+    {
+      "id": 1783483361229,
+      "name": "M4 20mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Nuts & Bolts"
+    },
+    {
+      "id": 1783483613344,
+      "name": "41005 choke",
+      "quantity": 4,
+      "inStock": true,
+      "category": "Electrical Components",
+      "imageUrl": "/uploads/1783483613314-IMG_20260129_141215_865.jpg"
+    },
+    {
+      "name": "41005 Transformer",
+      "quantity": 4,
+      "inStock": true,
+      "category": "Electrical Components",
+      "id": 1783489778861
+    },
+    {
+      "name": "AC Circuit Breaker (15Amp)",
       "quantity": 0,
       "inStock": false,
       "category": "Electrical Components",
-      "id": 1783456170277
+      "id": 1783489854283
     }
   ]
 }

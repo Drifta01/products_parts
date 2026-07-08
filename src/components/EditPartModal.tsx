@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Part, Product, PartCategory } from "@/lib/types";
+import { Part, Product } from "@/lib/types";
 
 interface EditPartModalProps {
   part: Part;
   products: Product[];
-  partCategories: PartCategory[];
+  partCategories: string[];
   onClose: () => void;
   onSave: (part: Part) => void;
 }
@@ -20,9 +20,7 @@ export default function EditPartModal({
 }: EditPartModalProps) {
   const [name, setName] = useState(part.name);
   const [quantity, setQuantity] = useState(part.quantity);
-  const [category, setCategory] = useState<PartCategory>(
-    part.category || "Other",
-  );
+  const [category, setCategory] = useState<string>(part.category || "Other");
   const [newCategory, setNewCategory] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
 
@@ -77,7 +75,7 @@ export default function EditPartModal({
           )}
           <select
             value={category}
-            onChange={(e) => setCategory(e.target.value as PartCategory)}
+            onChange={(e) => setCategory(e.target.value)}
             className="select select-bordered w-full">
             {partCategories.map((cat) => (
               <option key={cat} value={cat}>

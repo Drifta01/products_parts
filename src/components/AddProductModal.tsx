@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Product, Part, RequiredPart, PartCategory } from "@/lib/types";
+import { Product, Part, RequiredPart } from "@/lib/types";
 
 interface AddProductModalProps {
   parts: Part[];
@@ -74,11 +74,33 @@ export default function AddProductModal({
         acc[category].push(part);
         return acc;
       },
-      {} as Record<PartCategory, Part[]>,
+      {} as Record<string, Part[]>,
     );
 
+  const groupedRequiredParts = requiredParts.reduce(
+    (acc, reqPart) => {
+      const part = parts.find((p) => p.id === reqPart.partId);
+      if (part) {
+        const category = part.category || "Other";
+        if (!acc[category]) {
+          acc[category] = [];
+        }
+        acc[category].push(reqPart);
+      }
+      return acc;
+    },
+    {} as Record<string, RequiredPart[]>,
+  );
+
+  const sortedGroups = Object.keys(groupedParts).sort((a, b) =>
+    a.localeCompare(b),
+  );
+  const sortedRequiredGroups = Object.keys(groupedRequiredParts).sort((a, b) =>
+    a.localeCompare(b),
+  );
+
   return (
-    <div className="">
+    <div className="max-h-[90vh] overflow-y-auto">
       <div className="bg-white p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Add New Product</h2>
         <div className="space-y-4">
@@ -99,55 +121,76 @@ export default function AddProductModal({
           />
         </div>
         <div className="mt-6">
-          <h3 className="text-xl font-bold mb-2">Required Parts</h3>
+          <h3 className="text-xl font-bold mb-2">Inventory Parts</h3>
           <div className="space-y-2">
-            {requiredParts.map((reqPart) => {
-              const part = parts.find((p) => p.id === reqPart.partId);
-              return (
-                <div
-                  key={reqPart.partId}
-                  className="flex items-center justify-between">
-                  <span>{part?.name}</span>
-                  <div className="flex items-center space-x-2">
-                    <input
-                      type="number"
-                      value={reqPart.quantity}
-                      onChange={(e) =>
-                        handleRequiredPartChange(
-                          reqPart.partId,
-                          parseInt(e.target.value, 10) || 0,
-                        )
-                      }
-                      className="input input-bordered w-20"
-                    />
-                    <button
-                      onClick={() => removeRequiredPart(reqPart.partId)}
-                      className="btn btn-sm btn-error">
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="mt-4">
-            <select
-              onChange={(e) => addRequiredPart(parseInt(e.target.value, 10))}
-              className="select select-bordered w-full"
-              defaultValue="">
-              <option value="" disabled>
-                Add a part
-              </option>
-              {Object.keys(groupedParts).map((category) => (
-                <optgroup label={category} key={category}>
-                  {groupedParts[category as PartCategory].map((p) => (
-                    <option key={p.id} value={p.id}>
-                      {p.name}
-                    </option>
+            {sortedGroups.length === 0 ?
+              <div className="rounded-2xl border border-slate-200/10 bg-slate-100/80 p-4 text-sm text-slate-500">
+                No inventory parts are available to add.
+              </div>
+            : sortedGroups.map((category) => (
+                <div key={category}>
+                  <h4 className="font-bold text-lg mt-2">{category}</h4>
+                  {groupedParts[category].map((part) => (
+                    <div
+                      key={part.id}
+                      className="flex items-center justify-between rounded-xl border border-slate-200/10 bg-slate-50 px-3 py-2">
+                      <span>{part.name}</span>
+                      <button
+                        type="button"
+                        onClick={() => addRequiredPart(part.id)}
+                        className="btn btn-sm btn-primary">
+                        Add
+                      </button>
+                    </div>
                   ))}
-                </optgroup>
-              ))}
-            </select>
+                </div>
+              ))
+            }
+          </div>
+          <div className="mt-6">
+            <h3 className="text-xl font-bold mb-2">Required Parts</h3>
+            <div className="space-y-2">
+              {sortedRequiredGroups.length === 0 ?
+                <div className="rounded-2xl border border-slate-200/10 bg-slate-100/80 p-4 text-sm text-slate-500">
+                  No required parts selected yet.
+                </div>
+              : sortedRequiredGroups.map((category) => (
+                  <div key={category}>
+                    <h4 className="font-bold text-lg mt-2">{category}</h4>
+                    {groupedRequiredParts[category].map((reqPart) => {
+                      const part = parts.find((p) => p.id === reqPart.partId);
+                      return (
+                        <div
+                          key={reqPart.partId}
+                          className="flex items-center justify-between rounded-xl border border-slate-200/10 bg-slate-50 px-3 py-2">
+                          <span>{part?.name}</span>
+                          <div className="flex items-center space-x-2">
+                            <input
+                              type="number"
+                              min={1}
+                              value={reqPart.quantity}
+                              onChange={(e) =>
+                                handleRequiredPartChange(
+                                  reqPart.partId,
+                                  parseInt(e.target.value, 10) || 0,
+                                )
+                              }
+                              className="input input-bordered w-20"
+                            />
+                            <button
+                              type="button"
+                              onClick={() => removeRequiredPart(reqPart.partId)}
+                              className="btn btn-sm btn-error">
+                              Remove
+                            </button>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
         <div className="mt-6 flex justify-end space-x-4">

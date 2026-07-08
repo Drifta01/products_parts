@@ -12,9 +12,14 @@ const defaultData: DbData = { products: [], parts: [] };
 const adapter = new JSONFile<DbData>('db.json');
 const db = new Low<DbData>(adapter, defaultData);
 
-export const addProduct = async (product: Omit<Product, 'id' | 'requiredParts'>): Promise<Product> => {
+export const addProduct = async (product: Omit<Product, 'id'>): Promise<Product> => {
     await db.read();
-    const newProduct = { ...product, id: Date.now(), requiredParts: [], imageUrls: product.imageUrls || [] };
+    const newProduct: Product = {
+        ...product,
+        id: Date.now(),
+        requiredParts: product.requiredParts || [],
+        imageUrls: product.imageUrls || [],
+    };
     db.data?.products.push(newProduct);
     await db.write();
     return newProduct;
