@@ -60,13 +60,13 @@ export default function InConstructionCard({
   );
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-white p-6  shadow-md">
       <div className="flex items-center space-x-6">
         <div className="w-32 h-32 flex shrink-0">
           <img
             src={product.imageUrls[0] || "/placeholder.png"}
             alt={product.name}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover "
           />
         </div>
         <div className="flex grow">
@@ -81,7 +81,7 @@ export default function InConstructionCard({
               max="100"
               value={completion}
               onChange={(e) => setCompletion(parseInt(e.target.value, 10))}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+              className="w-full h-2 bg-gray-200  appearance-none cursor-pointer"
             />
           </div>
         </div>

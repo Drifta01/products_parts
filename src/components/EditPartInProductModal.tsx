@@ -20,7 +20,7 @@ export default function EditPartInProductModal({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-white p-8  shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Edit Part Quantity</h2>
         <p className="mb-4">
           Editing quantity for: <strong>{part.name}</strong>

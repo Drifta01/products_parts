@@ -111,14 +111,14 @@ export default function AddProductModal({
             placeholder="Product Name"
             className="input input-bordered w-full"
           />
-          <input
+          {/* <input
             type="file"
             multiple
             onChange={(e) =>
               e.target.files && setImageFiles(Array.from(e.target.files))
             }
             className="file-input file-input-bordered w-full"
-          />
+          /> */}
         </div>
         <div className="mt-6">
           <h3 className="text-xl font-bold mb-2">Inventory Parts</h3>
@@ -130,9 +130,9 @@ export default function AddProductModal({
             : sortedGroups.map((category) => (
                 <div key={category}>
                   <h4 className="font-bold text-lg mt-2">{category}</h4>
-                  {groupedParts[category].map((part) => (
+                  {groupedParts[category].map((part, index) => (
                     <div
-                      key={part.id}
+                      key={`${part.id}-${index}`}
                       className="flex items-center justify-between rounded-xl border border-slate-200/10 bg-slate-50 px-3 py-2">
                       <span>{part.name}</span>
                       <button
@@ -151,17 +151,17 @@ export default function AddProductModal({
             <h3 className="text-xl font-bold mb-2">Required Parts</h3>
             <div className="space-y-2">
               {sortedRequiredGroups.length === 0 ?
-                <div className="rounded-2xl border border-slate-200/10 bg-slate-100/80 p-4 text-sm text-slate-500">
+                <div className=" border border-slate-200/10 bg-slate-100/80 p-4 text-sm text-slate-500">
                   No required parts selected yet.
                 </div>
               : sortedRequiredGroups.map((category) => (
                   <div key={category}>
                     <h4 className="font-bold text-lg mt-2">{category}</h4>
-                    {groupedRequiredParts[category].map((reqPart) => {
+                    {groupedRequiredParts[category].map((reqPart, index) => {
                       const part = parts.find((p) => p.id === reqPart.partId);
                       return (
                         <div
-                          key={reqPart.partId}
+                          key={`${reqPart.partId}-${index}`}
                           className="flex items-center justify-between rounded-xl border border-slate-200/10 bg-slate-50 px-3 py-2">
                           <span>{part?.name}</span>
                           <div className="flex items-center space-x-2">

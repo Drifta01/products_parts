@@ -71,7 +71,7 @@ export default function InConstructionPage() {
   return (
     <div className="min-h-screen bg-slate-950 text-white">
       <div className="container mx-auto px-4 py-12">
-        <div className="rounded-[32px] bg-slate-900/90 p-10 shadow-2xl shadow-slate-950/40">
+        <div className="x] bg-slate-900/90 p-10 shadow-2xl shadow-slate-950/40">
           <div className="max-w-4xl">
             <p className="text-sm uppercase tracking-[0.3em] text-cyan-300">
               Construction Dashboard
@@ -88,7 +88,7 @@ export default function InConstructionPage() {
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {products.length === 0 ?
-            <div className="rounded-[28px] border border-slate-800 bg-slate-900/95 p-12 text-center text-slate-400 shadow-xl shadow-slate-950/20">
+            <div className="x] border border-slate-800 bg-slate-900/95 p-12 text-center text-slate-400 shadow-xl shadow-slate-950/20">
               <p className="text-xl font-semibold text-white">
                 No products currently in construction.
               </p>
@@ -102,7 +102,7 @@ export default function InConstructionPage() {
               return (
                 <div
                   key={product.id}
-                  className="overflow-hidden rounded-[28px] border border-slate-800 bg-slate-900/95 shadow-xl shadow-slate-950/20">
+                  className="overflow-hidden x] border border-slate-800 bg-slate-900/95 shadow-xl shadow-slate-950/20">
                   <div className="relative h-56 w-full overflow-hidden bg-slate-800">
                     <Image
                       src={product.imageUrls?.[0] || "/placeholder.jpg"}
@@ -111,9 +111,9 @@ export default function InConstructionPage() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover transition duration-500 hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 via-slate-950/30 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-flex rounded-full bg-cyan-500/15 px-3 py-1 text-sm font-semibold text-cyan-200">
+                      <span className="inline-flex  bg-cyan-500/15 px-3 py-1 text-sm font-semibold text-cyan-200">
                         In Construction
                       </span>
                     </div>
@@ -138,9 +138,9 @@ export default function InConstructionPage() {
                             {progress}%
                           </span>
                         </div>
-                        <div className="w-full rounded-full bg-slate-800 h-3">
+                        <div className="w-full  bg-slate-800 h-3">
                           <div
-                            className="h-3 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all"
+                            className="h-3  bg-linear-to-r from-cyan-500 to-blue-500 transition-all"
                             style={{
                               width: `${Math.min(Math.max(progress, 0), 100)}%`,
                             }}
@@ -190,12 +190,12 @@ export default function InConstructionPage() {
                           <div className="flex flex-wrap gap-3">
                             <button
                               onClick={() => handleSaveProgress(product)}
-                              className="rounded-full bg-cyan-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-cyan-400">
+                              className=" bg-cyan-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-cyan-400">
                               Save Progress
                             </button>
                             <Link
                               href={`/products/${product.id}`}
-                              className="rounded-full border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700">
+                              className=" border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700">
                               View Product
                             </Link>
                           </div>
@@ -203,7 +203,7 @@ export default function InConstructionPage() {
                       </div>
                     </div>
 
-                    <div className="rounded-3xl border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-300">
+                    <div className="border border-slate-800 bg-slate-950/70 p-4 text-sm text-slate-300">
                       <p className="font-semibold text-slate-100">
                         Estimated completion
                       </p>

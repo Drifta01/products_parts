@@ -25,7 +25,7 @@ export default function AddPartForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gray-100 p-4 rounded-lg my-4">
+    <form onSubmit={handleSubmit} className="bg-gray-100 p-4-lg my-4">
       <h3 className="text-xl font-bold mb-4">Add New Part</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <select
@@ -52,14 +52,14 @@ export default function AddPartForm({
         <div className="flex items-center space-x-2">
           <button
             type="submit"
-            className="btn btn-primary text-blue-900 bg-slate-200 hover:bg-slate-400 px-3 rounded"
+            className="btn btn-primary text-blue-900 bg-slate-200 hover:bg-slate-400 px-3"
             disabled={!selectedPartId}>
             Save Part
           </button>
           <button
             type="button"
             onClick={onCancel}
-            className="btn btn-primary text-blue-900 bg-slate-200 hover:bg-slate-400 px-3 rounded">
+            className="btn btn-primary text-blue-900 bg-slate-200 hover:bg-slate-400 px-3">
             Cancel
           </button>
         </div>

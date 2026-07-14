@@ -27,11 +27,26 @@ export default function InventoryPage() {
     fetchParts();
   }, []);
 
+  const preferredCategoryOrder = [
+    "Bolts",
+    "Washers",
+    "Nuts",
+    "Hardware Components",
+    "Electrical Components",
+  ];
+
   const partCategories = useMemo(() => {
     const categories = Array.from(
       new Set(parts.map((p) => p.category || "Other")),
     );
-    return categories.sort((a, b) => a.localeCompare(b));
+    return [...categories].sort((a, b) => {
+      const aIndex = preferredCategoryOrder.indexOf(a);
+      const bIndex = preferredCategoryOrder.indexOf(b);
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+      if (aIndex !== -1) return -1;
+      if (bIndex !== -1) return 1;
+      return a.localeCompare(b);
+    });
   }, [parts]);
 
   const handleAddPart = async () => {
@@ -139,7 +154,6 @@ export default function InventoryPage() {
       {} as Record<string, Part[]>,
     );
 
-    // Sort parts by name within each category
     Object.keys(grouped).forEach((cat) => {
       grouped[cat].sort((a, b) => a.name.localeCompare(b.name));
     });
@@ -147,10 +161,17 @@ export default function InventoryPage() {
     return grouped;
   }, [parts]);
 
-  const sortedCategoryKeys = useMemo(
-    () => Object.keys(groupedParts).sort((a, b) => a.localeCompare(b)),
-    [groupedParts],
-  );
+  const sortedCategoryKeys = useMemo(() => {
+    const keys = Object.keys(groupedParts);
+    return keys.sort((a, b) => {
+      const aIndex = preferredCategoryOrder.indexOf(a);
+      const bIndex = preferredCategoryOrder.indexOf(b);
+      if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+      if (aIndex !== -1) return -1;
+      if (bIndex !== -1) return 1;
+      return a.localeCompare(b);
+    });
+  }, [groupedParts]);
 
   const toggleCategory = (category: string) => {
     setOpenCategories((prev) => ({
@@ -160,213 +181,221 @@ export default function InventoryPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-10">
-      <div className="rounded-[32px] bg-slate-950/95 p-8 shadow-2xl shadow-slate-950/40">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
-          <div>
-            <h1 className="text-4xl font-extrabold text-white">
+    <div className="w-full min-h-full -4xl border border-slate-800/80 bg-slate-950/95 p-6 shadow-2xl shadow-slate-950/30 md:p-8 lg:p-10">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col gap-4 -[28px] border border-slate-800 bg-slate-900/90 p-8 shadow-xl shadow-slate-950/30 md:flex-row md:items-center md:justify-between">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
+              Inventory
+            </p>
+            <h1 className="mt-2 text-4xl font-extrabold text-white">
               Inventory Management
             </h1>
-            <p className="mt-2 text-sm text-slate-400 max-w-2xl">
+            <p className="mt-3 text-sm leading-7 text-slate-400">
               Organize your parts by category, keep stock levels accurate, and
               add inventory directly from the same interface.
             </p>
           </div>
           <button
             onClick={() => setIsAddPartFormVisible(!isAddPartFormVisible)}
-            className="btn btn-primary rounded-full bg-cyan-500 px-6 py-3 text-white hover:bg-cyan-400 transition">
+            className="inline-flex items-center justify-center   bg-slate-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-400">
             {isAddPartFormVisible ? "Cancel" : "Add Part"}
           </button>
         </div>
-      </div>
 
-      {isAddPartFormVisible && (
-        <div className="bg-white p-8 rounded-lg shadow-lg mb-10">
-          <h2 className="text-2xl font-bold mb-4">Add New Part</h2>
-          <div className="space-y-4">
-            <input
-              type="text"
-              value={newPartName}
-              onChange={(e) => setNewPartName(e.target.value)}
-              placeholder="Part Name"
-              className="input input-bordered w-full"
-            />
-            <input
-              type="number"
-              value={newPartQuantity}
-              onChange={(e) =>
-                setNewPartQuantity(parseInt(e.target.value, 10) || 0)
-              }
-              placeholder="Quantity"
-              className="input input-bordered w-full"
-            />
-            <input
-              type="file"
-              onChange={(e) =>
-                e.target.files && setNewPartImageFile(e.target.files[0])
-              }
-              className="file-input file-input-bordered w-full"
-            />
-            <select
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="select select-bordered w-full">
-              <option value="" disabled>
-                Select a category
-              </option>
-              {partCategories.map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-              <option value="new">Add new category...</option>
-            </select>
-            {category === "new" && (
+        {isAddPartFormVisible && (
+          <div className="-4xl bg-slate-950/95 p-8 shadow-2xl shadow-slate-950/40 mb-10 mt-8">
+            <h2 className="text-2xl font-bold mb-6 text-white">Add New Part</h2>
+            <div className="space-y-4">
               <input
                 type="text"
-                value={newCategory}
-                onChange={(e) => setNewCategory(e.target.value)}
-                placeholder="New Category Name"
-                className="input input-bordered w-full"
+                value={newPartName}
+                onChange={(e) => setNewPartName(e.target.value)}
+                placeholder="Part Name"
+                className="input input-bordered w-full bg-slate-900 border-slate-700 text-white placeholder-slate-400"
               />
-            )}
+              <input
+                type="number"
+                value={newPartQuantity}
+                onChange={(e) =>
+                  setNewPartQuantity(parseInt(e.target.value, 10) || 0)
+                }
+                placeholder="Quantity"
+                className="input input-bordered w-full bg-slate-900 border-slate-700 text-white placeholder-slate-400"
+              />
+              <input
+                type="file"
+                onChange={(e) =>
+                  e.target.files && setNewPartImageFile(e.target.files[0])
+                }
+                className="file-input file-input-bordered w-full bg-slate-900 border-slate-700 text-slate-400"
+              />
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="select select-bordered w-full bg-slate-900 border-slate-700 text-white">
+                <option value="" disabled className="text-slate-400">
+                  Select a category
+                </option>
+                {partCategories.map((cat) => (
+                  <option
+                    key={cat}
+                    value={cat}
+                    className="text-white bg-slate-900">
+                    {cat}
+                  </option>
+                ))}
+                <option value="new" className="text-white bg-slate-900">
+                  Add new category...
+                </option>
+              </select>
+              {category === "new" && (
+                <input
+                  type="text"
+                  value={newCategory}
+                  onChange={(e) => setNewCategory(e.target.value)}
+                  placeholder="New Category Name"
+                  className="input input-bordered w-full bg-slate-900 border-slate-700 text-white placeholder-slate-400"
+                />
+              )}
+            </div>
+            <div className="mt-6 flex justify-end space-x-4">
+              <button
+                onClick={() => setIsAddPartFormVisible(false)}
+                className="btn bg-slate-800 border-slate-700 text-white hover:bg-slate-700">
+                Cancel
+              </button>
+              <button
+                onClick={handleAddPart}
+                className="btn btn-primary bg-cyan-500 border-cyan-500 text-white hover:bg-cyan-400">
+                Add Part
+              </button>
+            </div>
           </div>
-          <div className="mt-6 flex justify-end space-x-4">
-            <button
-              onClick={() => setIsAddPartFormVisible(false)}
-              className="btn">
-              Cancel
-            </button>
-            <button onClick={handleAddPart} className="btn btn-primary">
-              Add Part
-            </button>
-          </div>
-        </div>
-      )}
+        )}
 
-      <div className="mt-12">
-        <h2 className="text-3xl text-white font-bold mb-6 text-center">
-          Current Inventory
-        </h2>
+        <div className="mt-12">
+          <h2 className="text-3xl text-white font-bold mb-6 text-center">
+            Current Inventory
+          </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {sortedCategoryKeys.map((category) => {
-            const isOpen = openCategories[category] ?? true;
-            const partsInCategory = groupedParts[category] ?? [];
-            return (
-              <div
-                key={category}
-                className="overflow-hidden rounded-[28px] border border-slate-800 bg-slate-900 shadow-xl shadow-slate-950/20">
-                <div className="flex items-center justify-between gap-4 bg-slate-800 px-5 py-4">
-                  <div>
-                    <h3 className="text-xl font-semibold text-white">
-                      {category}
-                    </h3>
-                    <p className="text-sm text-slate-400">
-                      {partsInCategory.length} part
-                      {partsInCategory.length !== 1 ? "s" : ""}
-                    </p>
+          <div className="space-y-6">
+            {sortedCategoryKeys.map((category) => {
+              const isOpen = openCategories[category] ?? true;
+              const partsInCategory = groupedParts[category] ?? [];
+              return (
+                <section
+                  key={category}
+                  className="overflow-hidden -3xl border border-slate-800 bg-slate-900 shadow-xl shadow-slate-950/20">
+                  <div className="flex flex-col gap-4 border-b border-slate-800 bg-slate-800/90 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <h3 className="text-white text-2xl font-semibold ">
+                        {category}
+                      </h3>
+                      <p className="mt-1 text-sm text-slate-200">
+                        {partsInCategory.length} part
+                        {partsInCategory.length !== 1 ? "s" : ""}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-flex  bg-slate-700 px-3 py-1 text-lg  text-white ">
+                        {partsInCategory.length > 0 ? "Active" : "Empty"}
+                      </span>
+                      <button
+                        onClick={() => toggleCategory(category)}
+                        className=" bg-slate-900 px-3 py-1 text-lg text-white transition hover:bg-slate-800">
+                        {isOpen ? "Collapse" : "Expand"}
+                      </button>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex rounded-full bg-slate-700 px-3 py-1 text-sm text-slate-200">
-                      {partsInCategory.length > 0 ? "Active" : "Empty"}
-                    </span>
-                    <button
-                      onClick={() => toggleCategory(category)}
-                      className="rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-800">
-                      {isOpen ? "Collapse" : "Expand"}
-                    </button>
-                  </div>
-                </div>
 
-                {isOpen && (
-                  <div className="divide-y divide-slate-800 px-5 py-4">
-                    {partsInCategory.length === 0 ?
-                      <div className="py-8 text-center text-slate-400 italic">
-                        No parts in this category.
-                      </div>
-                    : partsInCategory.map((part) => (
-                        <div
-                          key={part.id}
-                          className="flex flex-col gap-4 border-b border-slate-800 py-4 last:border-b-0 sm:flex-row sm:items-center sm:justify-between">
-                          <div className="flex items-center gap-4">
-                            <div className="h-16 w-16 overflow-hidden rounded-3xl bg-slate-800 flex items-center justify-center">
-                              {part.imageUrl ?
-                                <img
-                                  src={part.imageUrl}
-                                  alt={part.name}
-                                  className="h-full w-full object-cover"
-                                />
-                              : <span className="text-xs text-slate-500">
-                                  No image
-                                </span>
-                              }
-                            </div>
-                            <div>
-                              <div className="text-lg font-semibold text-white">
-                                {part.name}
-                              </div>
-                              <div className="text-sm text-slate-500">
-                                ID: {part.id}
-                              </div>
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col items-start gap-3 sm:items-end">
-                            <div className="text-right">
-                              <div className="text-xl font-semibold text-white">
-                                {part.quantity}
-                              </div>
-                              <div className="text-sm text-slate-400">Qty</div>
-                            </div>
-                            <div className="flex flex-wrap gap-2 text-sm">
-                              <span
-                                className={`inline-flex items-center rounded-full px-3 py-1 ${
-                                  part.quantity > 5 ?
-                                    "bg-emerald-100 text-emerald-900"
-                                  : part.quantity > 0 ?
-                                    "bg-amber-100 text-amber-900"
-                                  : "bg-rose-100 text-rose-900"
-                                }`}>
-                                {part.quantity > 5 ?
-                                  "In stock"
-                                : part.quantity > 0 ?
-                                  "Low stock"
-                                : "Out of stock"}
-                              </span>
-                              <button
-                                onClick={() => setEditingPart(part)}
-                                className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-slate-200 hover:bg-slate-700">
-                                Edit
-                              </button>
-                              <button
-                                onClick={() => handleDeletePart(part.id)}
-                                aria-label="Delete inventory part"
-                                className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-rose-600 text-slate-100 transition hover:bg-rose-500">
-                                <span className="text-sm font-semibold">×</span>
-                              </button>
-                            </div>
-                          </div>
+                  {isOpen && (
+                    <div className="divide-y divide-slate-800 px-4 py-1">
+                      {partsInCategory.length === 0 ?
+                        <div className="py-8 text-center text-slate-400 italic">
+                          No parts in this category.
                         </div>
-                      ))
-                    }
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </div>
+                      : partsInCategory.map((part) => (
+                          <div
+                            key={part.name}
+                            className="flex flex-col gap-4 border-b border-slate-800 py-2 last:border-b-0 sm:flex-row sm:items-center sm:justify-between">
+                            <div className="flex items-center gap-4">
+                              <div className="h-16 w-16 overflow-hidden  bg-slate-800 flex items-center justify-center">
+                                {part.imageUrl ?
+                                  <img
+                                    src={part.imageUrl}
+                                    alt={part.name}
+                                    className="h-full w-full object-cover"
+                                  />
+                                : <span className="text-xs text-slate-500">
+                                    No image
+                                  </span>
+                                }
+                              </div>
+                              <div>
+                                <div className="text-lg font-semibold text-white">
+                                  {part.name}
+                                </div>
+                              </div>
+                            </div>
 
-      {editingPart && (
-        <EditPartModal
-          part={editingPart}
-          products={[]}
-          partCategories={partCategories}
-          onClose={() => setEditingPart(null)}
-          onSave={handleUpdatePart}
-        />
-      )}
+                            <div className="flex flex-col items-start gap-3 sm:items-end">
+                              <div className="text-right">
+                                <div className="text-lg text-white">
+                                  Qty: {part.quantity}
+                                </div>
+                              </div>
+                              <div className="flex flex-wrap gap-8 text-sm">
+                                <span
+                                  className={`inline-flex items-center  px-5 py-1 ${
+                                    part.quantity > 5 ?
+                                      "bg-emerald-100 text-emerald-900"
+                                    : part.quantity > 0 ?
+                                      "bg-amber-100 text-amber-900"
+                                    : "bg-rose-100 text-rose-900"
+                                  }`}>
+                                  {part.quantity > 5 ?
+                                    "In stock"
+                                  : part.quantity > 0 ?
+                                    "Low stock"
+                                  : "Out of stock"}
+                                </span>
+                                <button
+                                  onClick={() => setEditingPart(part)}
+                                  className=" border border-slate-700 bg-slate-800 px-3 py-1 text-slate-200 hover:bg-slate-700">
+                                  Edit
+                                </button>
+                                <button
+                                  onClick={() => handleDeletePart(part.id)}
+                                  aria-label="Delete inventory part"
+                                  className=" items-center justify-center px-3 bg-rose-600 text-slate-100 transition hover:bg-rose-500">
+                                  <span className="text-sm font-semibold">
+                                    Delete
+                                  </span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      }
+                    </div>
+                  )}
+                </section>
+              );
+            })}
+          </div>
+        </div>
+
+        {editingPart && (
+          <EditPartModal
+            part={editingPart}
+            products={[]}
+            partCategories={partCategories}
+            onClose={() => setEditingPart(null)}
+            onSave={handleUpdatePart}
+          />
+        )}
+      </div>
     </div>
   );
 }

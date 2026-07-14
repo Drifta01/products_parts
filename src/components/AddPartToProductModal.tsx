@@ -19,7 +19,7 @@ export default function AddPartToProductModal({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-white p-8  shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold mb-4">Add Part to Product</h2>
         <div className="space-y-4">
           <select

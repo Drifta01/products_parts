@@ -89,7 +89,7 @@ export default function EditProductModal({
 
   return (
     <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
+      <div className="bg-white p-8  shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Edit Product</h2>
         <div className="space-y-4">
           <input
@@ -135,7 +135,7 @@ export default function EditProductModal({
                 <img
                   src={(product as any).imageUrl || "null"}
                   alt={product.name}
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover"
                 />
               </div>
             }

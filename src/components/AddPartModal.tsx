@@ -39,7 +39,7 @@ export default function AddPartModal({
 
   return (
     <div className="fixed inset-0 bg-white bg-opacity-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
+      <div className="bg-white p-8 shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Add New Part</h2>
         <div className="space-y-4">
           <input
@@ -65,7 +65,7 @@ export default function AddPartModal({
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className="select select-bordered w-full">
-            <option value="Nuts & Bolts">Nuts & Bolts</option>
+            <option value="Bolts">Bolts</option>
             <option value="Electrical Components">Electrical Components</option>
             <option value="Other">Other</option>
           </select>

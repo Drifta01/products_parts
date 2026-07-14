@@ -24,7 +24,7 @@ export default function EditPartForm({
   };
 
   return (
-    <li className="bg-gray-100 p-4 rounded-lg my-2">
+    <li className="bg-gray-100 p-4  my-2">
       <h3 className="text-red-600 text-lg font-bold mb-2">
         Editing:<span className="m-6">{part.name}</span>
       </h3>
@@ -39,13 +39,13 @@ export default function EditPartForm({
         />
         <button
           type="submit"
-          className="btn btn-primary text-blue-600 bg-slate-400 hover:bg-slate-300 px-3 rounded">
+          className="btn btn-primary text-blue-600 bg-slate-400 hover:bg-slate-300 px-3 ">
           Save
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="btn  text-blue-600 bg-slate-400 hover:bg-slate-300 px-3 rounded">
+          className="btn  text-blue-600 bg-slate-400 hover:bg-slate-300 px-3">
           Cancel
         </button>
       </form>
