@@ -3,26 +3,123 @@
     {
       "name": "41005",
       "imageUrls": [
-        "/uploads/1784064355874-41005_front_view.png"
+        "/uploads/1784715867176-41004_Ai.jpg"
       ],
       "requiredParts": [
         {
+          "partId": 17,
+          "quantity": 1
+        },
+        {
+          "partId": 35,
+          "quantity": 6
+        },
+        {
+          "partId": 1784718511877,
+          "quantity": 2
+        },
+        {
+          "partId": 19,
+          "quantity": 1
+        },
+        {
+          "partId": 6,
+          "quantity": 8
+        },
+        {
+          "partId": 8,
           "quantity": 4
+        },
+        {
+          "partId": 18,
+          "quantity": 1
+        },
+        {
+          "partId": 4,
+          "quantity": 4
+        },
+        {
+          "partId": 5,
+          "quantity": 1
+        },
+        {
+          "partId": 13,
+          "quantity": 2
+        },
+        {
+          "partId": 1784720555526,
+          "quantity": 2
+        },
+        {
+          "partId": 1784720555526,
+          "quantity": 2
+        },
+        {
+          "partId": 1784720555526,
+          "quantity": 2
+        },
+        {
+          "partId": 1784720555526,
+          "quantity": 1
+        },
+        {
+          "partId": 1784718511877,
+          "quantity": 2
+        },
+        {
+          "partId": 53,
+          "quantity": 2
+        },
+        {
+          "partId": 1784718511877,
+          "quantity": 2
+        },
+        {
+          "partId": 26,
+          "quantity": 2
+        },
+        {
+          "partId": 30,
+          "quantity": 4
+        },
+        {
+          "partId": 44,
+          "quantity": 4
+        },
+        {
+          "partId": 49,
+          "quantity": 4
+        },
+        {
+          "partId": 73,
+          "quantity": 4
+        },
+        {
+          "partId": 56,
+          "quantity": 4
+        },
+        {
+          "partId": 62,
+          "quantity": 2
         }
       ],
       "quantity": 0,
-      "inConstruction": 0,
-      "id": 1784064355922
+      "inConstruction": 1,
+      "id": 1784172565896,
+      "completionPercentage": 45,
+      "buildProduct": true
     }
   ],
   "parts": [
     {
+      "id": 1,
       "name": "M8 40mm",
       "quantity": 24,
       "inStock": true,
       "category": "Bolts"
     },
     {
+      "id": 2,
       "name": "M6 75mm",
       "quantity": 48,
       "inStock": true,
@@ -30,43 +127,50 @@
       "categoryId": 1
     },
     {
+      "id": 3,
       "name": "M6 65mm",
       "quantity": 56,
       "inStock": true,
       "category": "Bolts"
     },
     {
+      "id": 4,
       "name": "M8 20mm",
-      "quantity": 76,
+      "quantity": 72,
       "inStock": true,
       "category": "Bolts"
     },
     {
+      "id": 5,
       "name": "PCB (Amps)",
-      "quantity": 12,
+      "quantity": 11,
       "inStock": true,
       "category": "Electrical Components",
       "imageUrl": "/uploads/1777454250938-1224_3015_supercaherge_meter.jpg"
     },
     {
+      "id": 6,
       "name": "M8 Washers (Large)",
-      "quantity": 72,
+      "quantity": 64,
       "inStock": true,
       "category": "Washers"
     },
     {
+      "id": 7,
       "name": "M8 Washers (Small)",
       "quantity": 104,
       "inStock": true,
       "category": "Washers"
     },
     {
+      "id": 8,
       "name": "M8 Spring Washers",
-      "quantity": 36,
+      "quantity": 32,
       "inStock": true,
       "category": "Washers"
     },
     {
+      "id": 9,
       "name": "HeatSink",
       "quantity": 15,
       "inStock": false,
@@ -74,6 +178,7 @@
       "imageUrl": "/uploads/1777455510882-1224_3015_supercaherge_top.jpg"
     },
     {
+      "id": 10,
       "name": "AC Circuit Breaker (5amp)",
       "quantity": 1,
       "inStock": false,
@@ -81,45 +186,28 @@
       "imageUrl": "/uploads/1777454441823-1224_3015_supercaherge_AC+Switch.jpg"
     },
     {
+      "id": 11,
       "name": "AC Circuit Breaker (8 Amp)",
       "quantity": 20,
       "inStock": true,
       "category": "Electrical Components"
     },
     {
+      "id": 12,
       "name": "M8 30mm",
       "quantity": 100,
       "inStock": false,
       "category": "Bolts"
     },
     {
+      "id": 13,
       "name": "Heavy Duty Switch",
-      "quantity": 50,
+      "quantity": 48,
       "inStock": false,
       "category": "Hardware Components"
     },
     {
-      "name": "M3 12mm",
-      "quantity": 100,
-      "inStock": true,
-      "category": "Bolts",
-      "imageUrl": "/uploads/1784061287268-M3 _Bolt.jpeg"
-    },
-    {
-      "name": "M3 20mm",
-      "quantity": 100,
-      "inStock": false,
-      "category": "Bolts",
-      "imageUrl": "/uploads/1784061287268-M3 _Bolt.jpeg"
-    },
-    {
-      "name": "M4 20mm",
-      "quantity": 100,
-      "inStock": false,
-      "category": "Bolts",
-      "imageUrl": "/uploads/1784061361704-M4_bolt.jpeg"
-    },
-    {
+      "id": 17,
       "name": "41005 choke",
       "quantity": 4,
       "inStock": true,
@@ -127,16 +215,927 @@
       "imageUrl": "/uploads/1783483613314-IMG_20260129_141215_865.jpg"
     },
     {
+      "id": 18,
       "name": "41005 Transformer",
-      "quantity": 4,
+      "quantity": 3,
       "inStock": true,
       "category": "Electrical Components"
     },
     {
+      "id": 19,
       "name": "AC Circuit Breaker (15Amp)",
-      "quantity": 0,
+      "quantity": -1,
       "inStock": false,
       "category": "Electrical Components"
+    },
+    {
+      "id": 20,
+      "partNumber": "0046410310",
+      "name": "M3 10mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "headSize": "6mm",
+      "threadDiameter": "2.4mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 21,
+      "partNumber": "0046410325",
+      "name": "M3 25mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "headSize": "6mm",
+      "threadDiameter": "2.4mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 22,
+      "partNumber": "0046410316",
+      "name": "M3 16mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "headSize": "6mm",
+      "threadDiameter": "2.4mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 23,
+      "partNumber": "0046410330",
+      "name": "M3 30mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "headSize": "6mm",
+      "threadDiameter": "2.4mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 24,
+      "partNumber": "0046410335",
+      "name": "M3 35mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "headSize": "6mm",
+      "threadDiameter": "2.4mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 25,
+      "partNumber": "0046410340",
+      "name": "M3 40mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "headSize": "6mm",
+      "threadDiameter": "2.4mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 26,
+      "partNumber": "0046410312",
+      "name": "M3 12mm",
+      "quantity": 98,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "headSize": "6mm",
+      "threadDiameter": "2.4mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 27,
+      "partNumber": "0046410320",
+      "name": "M3 20mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "headSize": "6mm",
+      "threadDiameter": "2.4mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 1784718511877.2644,
+      "name": "M3 12mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "name": "M3 16mm",
+      "quantity": 100,
+      "inStock": true,
+      "category": "Pan Pozi Screws",
+      "imageUrl": "/uploads/1784718715388-m3_pan_pozi.jpeg",
+      "id": 1784718715402.2139
+    },
+    {
+      "id": 30,
+      "partNumber": "0046410408",
+      "name": "M4 8mm",
+      "quantity": 96,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 31,
+      "partNumber": "0046410410",
+      "name": "M4 10mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 32,
+      "partNumber": "0046410412",
+      "name": "M4 12mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 33,
+      "partNumber": "0046410416",
+      "name": "M4 16mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 34,
+      "partNumber": "0046410422",
+      "name": "M4 22mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 35,
+      "partNumber": "0046410420",
+      "name": "M4 20mm",
+      "quantity": 94,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 36,
+      "partNumber": "0046410425",
+      "name": "M4 25mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 37,
+      "partNumber": "0046410430",
+      "name": "M4 30mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 38,
+      "partNumber": "0046410435",
+      "name": "M4 35mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 39,
+      "partNumber": "0046410440",
+      "name": "M4 40mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 40,
+      "partNumber": "0046410445",
+      "name": "M4 45mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 41,
+      "partNumber": "0046410450",
+      "name": "M4 50mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 42,
+      "partNumber": "0046410460",
+      "name": "M4 60mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "8mm",
+      "threadDiameter": "3.1mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 43,
+      "partNumber": "0046410612",
+      "name": "M6 12mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "stockCount": 200,
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 44,
+      "partNumber": "0046410620",
+      "name": "M6 20mm",
+      "quantity": -4,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "stockCount": 200,
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 45,
+      "partNumber": "0046410616",
+      "name": "M6 16mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "stockCount": 200,
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 46,
+      "partNumber": "0046410625",
+      "name": "M6 25mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "stockCount": 200,
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 47,
+      "partNumber": "0046410630",
+      "name": "M6 30mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "stockCount": 100,
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 48,
+      "partNumber": "0046410650",
+      "name": "M6 50mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 49,
+      "partNumber": "0046410645",
+      "name": "M6 45mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "stockCount": 100,
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 50,
+      "partNumber": "0046410665",
+      "name": "M6 65mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 51,
+      "partNumber": "0046410635",
+      "name": "M6 35mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "stockCount": 100,
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 52,
+      "partNumber": "0046410640",
+      "name": "M6 40mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "12mm",
+      "threadDiameter": "4.6mm",
+      "imageUrl": "/uploads/1784718511837-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 53,
+      "partNumber": "41005.1",
+      "name": "heatsink (41005)",
+      "quantity": 18,
+      "inStock": true,
+      "category": "Hardware Components",
+      "imageUrl": "/uploads/1784720555511-41005_heatsink.jpg"
+    },
+    {
+      "id": 54,
+      "partNumber": "00576100",
+      "name": "M6 100mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 55,
+      "partNumber": "0057616",
+      "name": "M6 16mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 56,
+      "partNumber": "0057630",
+      "name": "M6 30mm",
+      "quantity": -4,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 57,
+      "partNumber": "0057640",
+      "name": "M6 40mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 58,
+      "partNumber": "0057665",
+      "name": "M6 65mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 59,
+      "partNumber": "0057685",
+      "name": "M6 85mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 60,
+      "partNumber": "0057610",
+      "name": "M6 10mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 61,
+      "partNumber": "00576110",
+      "name": "M6 110mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 62,
+      "partNumber": "0057612",
+      "name": "M6 12mm",
+      "quantity": -2,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 63,
+      "partNumber": "0057620",
+      "name": "M6 20mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 64,
+      "partNumber": "0057625",
+      "name": "M6 25mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 65,
+      "partNumber": "0057645",
+      "name": "M6 45mm",
+      "quantity": 100,
+      "inStock": false,
+      "category": "Pan Pozi Screws",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784730006774-m3_pan_pozi.jpeg"
+    },
+    {
+      "id": 66,
+      "partNumber": "0057635",
+      "name": "M6 35mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 67,
+      "partNumber": "0057650",
+      "name": "M6 50mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 68,
+      "partNumber": "0057655",
+      "name": "M6 55mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 69,
+      "partNumber": "0057670",
+      "name": "M6 70mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 70,
+      "partNumber": "0057660",
+      "name": "M6 60mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 71,
+      "partNumber": "0057675",
+      "name": "M6 75mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 72,
+      "partNumber": "0057680",
+      "name": "M6 80mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 73,
+      "partNumber": "0057690",
+      "name": "M6 90mm",
+      "quantity": -4,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS10",
+      "threadDiameter": "4mm",
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 74,
+      "partNumber": "00578160",
+      "name": "M8 160mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 10,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 75,
+      "partNumber": "0057840",
+      "name": "M8 40mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 76,
+      "partNumber": "0057870",
+      "name": "M8 70mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 77,
+      "partNumber": "0057812",
+      "name": "M8 12mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 78,
+      "partNumber": "00578140",
+      "name": "M8 140mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 10,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 79,
+      "partNumber": "00578150",
+      "name": "M8 150mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 10,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 80,
+      "partNumber": "0057816",
+      "name": "M8 16mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 81,
+      "partNumber": "0057835",
+      "name": "M8 35mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 82,
+      "partNumber": "0057830",
+      "name": "M8 30mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 83,
+      "partNumber": "00578100",
+      "name": "M8 100mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 84,
+      "partNumber": "00578120",
+      "name": "M8 120mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 10,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 85,
+      "partNumber": "00578110",
+      "name": "M8 110mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 10,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 86,
+      "partNumber": "0057818",
+      "name": "M8 18mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 87,
+      "partNumber": "0057820",
+      "name": "M8 20mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 50,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 88,
+      "partNumber": "0057825",
+      "name": "M8 25mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 89,
+      "partNumber": "0057845",
+      "name": "M8 45mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 90,
+      "partNumber": "0057855",
+      "name": "M8 55mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 91,
+      "partNumber": "0057850",
+      "name": "M8 50mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 92,
+      "partNumber": "0057860",
+      "name": "M8 60mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 93,
+      "partNumber": "0057875",
+      "name": "M8 75mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 94,
+      "partNumber": "0057865",
+      "name": "M8 65mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 95,
+      "partNumber": "0057880",
+      "name": "M8 80mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 96,
+      "partNumber": "0057885",
+      "name": "M8 85mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 97,
+      "partNumber": "0057890",
+      "name": "M8 90mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "stockCount": 25,
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
+    },
+    {
+      "id": 98,
+      "partNumber": "0057895",
+      "name": "M8 95mm",
+      "quantity": 0,
+      "inStock": false,
+      "category": "Bolts",
+      "headSize": "WS13",
+      "threadDiameter": "5.3mm",
+      "imageUrl": "/uploads/1784729105934-Bolt.jpeg"
     }
   ]
 }

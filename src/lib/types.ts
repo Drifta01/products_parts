@@ -26,6 +26,7 @@ export interface Part {
     name: string;
     quantity: number;
     inStock: boolean;
+    partNumber?: number;
     // category is stored as a simple string in db.json (e.g. "Nuts & Bolts")
     category?: string;
     // optional numeric category id when present

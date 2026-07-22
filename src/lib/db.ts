@@ -74,7 +74,7 @@ export const deletePart = async (id: number): Promise<void> => {
 
 export const addPart = async (part: Omit<Part, 'id' | 'inStock'>): Promise<Part> => {
     await db.read();
-    const newPart = { ...part, id: Date.now(), inStock: part.quantity > 0 };
+    const newPart = { ...part, id: Date.now() + Math.random(), inStock: part.quantity > 0 };
     db.data?.parts.push(newPart);
     await db.write();
     return newPart;

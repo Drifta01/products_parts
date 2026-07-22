@@ -62,20 +62,16 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="w-full min-h-full  border border-slate-800/80 bg-slate-950/95 p-6 shadow-2xl shadow-slate-950/30 md:p-8 lg:p-10">
-      <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col gap-4 border border-slate-800 bg-slate-900/90 p-8 shadow-xl shadow-slate-950/30 md:flex-row md:items-center md:justify-between">
-          <div className="max-w-3xl">
+    <div className="w-full min-h-full   gap-4 border border-slate-800 bg-slate-900/90 p-8 shadow-xl shadow-slate-950/30 md:flex-row md:items-center md:justify-between">
+      <div className="border border-slate-800/80 bg-slate-950/95 p-6 shadow-2xl shadow-slate-950/30 md:p-8 lg:p-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-4xl">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
               Catalog
             </p>
             <h1 className="mt-2 text-4xl font-extrabold text-white">
               Products
             </h1>
-            <p className="mt-3 text-sm leading-7 text-slate-400">
-              Manage your product catalog, review required parts, and keep each
-              build tied to the correct inventory.
-            </p>
           </div>
           <button
             onClick={() => setIsModalOpen(true)}
@@ -96,38 +92,33 @@ export default function ProductsPage() {
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {products.map((product, index) => {
-            const imageUrl =
-              (product.imageUrls && product.imageUrls[0]) ||
-              (product as any).imageUrl;
+            const imageUrl = product.imageUrls && product.imageUrls[0];
+
             const requiredCount = product.requiredParts?.length ?? 0;
             return (
               <Link
                 key={product.id}
                 href={`/products/${product.id}`}
-                className="group block overflow-hidden  border border-slate-800 bg-slate-950 shadow-xl shadow-slate-950/30 transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                <div className="relative h-72 overflow-hidden bg-slate-900">
+                className="group block overflow-hidden  border border-slate-800 bg-slate-950 shadow-xl shadow-slate-950/30 ">
+                <div className="relative h-52 overflow-hidden bg-slate-900">
                   {imageUrl ?
                     <Image
                       src={imageUrl}
                       alt={product.name}
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition duration-500 group-hover:scale-105"
+                      sizes="max-w-fit"
+                      className="object-cover  "
                       loading={index === 0 ? "eager" : "lazy"}
                     />
                   : <div className="flex h-full items-center justify-center bg-slate-800 text-slate-500">
                       No image available
                     </div>
                   }
-                  <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-slate-950/95 to-transparent px-5 py-4">
-                    <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">
-                      Product
-                    </p>
-                    <h2 className="mt-2 text-2xl font-semibold text-white">
-                      {product.name}
-                    </h2>
-                  </div>
+                  <div className="absolute  bottom-0 bg-linear-to-t from-slate-950/95 to-transparent px-5 py-4"></div>
                 </div>
+                <h2 className="mt-2 ml-4 text-2xl font-semibold text-white">
+                  {product.name}
+                </h2>
                 <div className="space-y-3 px-5 py-5">
                   <div className="flex flex-col gap-3 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
                     <span>
@@ -135,7 +126,7 @@ export default function ProductsPage() {
                       {requiredCount !== 1 ? "s" : ""}
                     </span>
                     <div className="flex items-center gap-2">
-                      <span className=" bg-slate-800 px-3 py-1 text-slate-200">
+                      <span className=" bg-slate-800 px-3  text-slate-200">
                         View details
                       </span>
                       <button

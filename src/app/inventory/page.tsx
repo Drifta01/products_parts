@@ -161,6 +161,21 @@ export default function InventoryPage() {
     return grouped;
   }, [parts]);
 
+  useEffect(() => {
+    console.log("Grouped parts updated:", groupedParts);
+    for (const category in groupedParts) {
+      const partIds = groupedParts[category].map((p) => p.id);
+      const uniquePartIds = new Set(partIds);
+      if (partIds.length !== uniquePartIds.size) {
+        console.error(
+          "Duplicate part IDs found in category:",
+          category,
+          partIds,
+        );
+      }
+    }
+  }, [groupedParts]);
+
   const sortedCategoryKeys = useMemo(() => {
     const keys = Object.keys(groupedParts);
     return keys.sort((a, b) => {
@@ -317,8 +332,8 @@ export default function InventoryPage() {
                         </div>
                       : partsInCategory.map((part) => (
                           <div
-                            key={part.name}
-                            className="flex flex-col gap-4 border-b border-slate-800 py-2 last:border-b-0 sm:flex-row sm:items-center sm:justify-between">
+                            key={part.id}
+                            className="flex flex-col gap-4 border-b border-slate-800 py-4 last:border-b-0 sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex items-center gap-4">
                               <div className="h-16 w-16 overflow-hidden  bg-slate-800 flex items-center justify-center">
                                 {part.imageUrl ?
@@ -336,6 +351,11 @@ export default function InventoryPage() {
                                 <div className="text-lg font-semibold text-white">
                                   {part.name}
                                 </div>
+                                {part.partNumber && (
+                                  <div className="text-sm text-slate-400 mt-1">
+                                    Part #: {part.partNumber}
+                                  </div>
+                                )}
                               </div>
                             </div>
 
@@ -347,7 +367,7 @@ export default function InventoryPage() {
                               </div>
                               <div className="flex flex-wrap gap-8 text-sm">
                                 <span
-                                  className={`inline-flex items-center  px-5 py-1 ${
+                                  className={`inline-flex items-center justify-center w-28 px-4 py-1 ${
                                     part.quantity > 5 ?
                                       "bg-emerald-100 text-emerald-900"
                                     : part.quantity > 0 ?
